@@ -3,6 +3,7 @@ import { Navigate } from 'react-router-dom'
 import ErrorAlert from '../components/ErrorAlert'
 import { MOCK_USERS } from '../constants/mock/users'
 import Avatar from '@mui/material/Avatar'
+async function getAllUsers() {} // Not yet Implemented
 
 function SearchUserPage() {
   const profile_picture_placeholder =
@@ -71,4 +72,5 @@ function SearchUserPage() {
     </div>
   )
 }
+
 export default SearchUserPage
