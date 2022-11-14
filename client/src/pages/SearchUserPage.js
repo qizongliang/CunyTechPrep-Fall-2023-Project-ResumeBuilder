@@ -1,17 +1,29 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Navigate } from 'react-router-dom'
 import ErrorAlert from '../components/ErrorAlert'
 import { MOCK_USERS } from '../constants/mock/users'
 import Avatar from '@mui/material/Avatar'
-async function getAllUsers() {} // Not yet Implemented
 
 function SearchUserPage() {
+  // const [allUsers, setAllUsers] = useState([])
+
+  // function getAllUsers() {
+  //   fetch('http://localhost:8000/api/users/all')
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setAllUsers(data.users)
+  //     })
+  // } // Not yet Implemented
+
+  // useEffect(() => {
+  //   getAllUsers()
+  // }, [])
   const profile_picture_placeholder =
     'https://play-lh.googleusercontent.com/8ddL1kuoNUB5vUvgDVjYY3_6HwQcrg1K2fd_R8soD-e2QYj8fT9cfhfh3G0hnSruLKec'
   let userView = MOCK_USERS.map((user) => {
     return (
       <div
-        class="container border border-secondary rounded pull-left"
+        className="container border border-secondary rounded pull-left"
         key={user.id}
       >
         <div class="row">
@@ -19,16 +31,20 @@ function SearchUserPage() {
             <img
               src={user.profile_picture_url ?? profile_picture_placeholder}
               alt=""
-              class="img-fluid rounded-circle start m-auto p-0 float-left"
+              className="img-fluid rounded-circle start m-auto p-0 float-left"
               width="32px"
               height="32px"
             />
           </div>
-          <div class="col-3 m-auto p-0">
-            <p class="text-start m-0 Container-fluid p-0">{user.username} </p>
+          <div className="col-3 m-auto p-0">
+            <p className="text-start m-0 Container-fluid p-0">
+              {user.username}{' '}
+            </p>
           </div>
           <div class="col-8 m-auto p-0">
-            <p class="text-end m-0 Container-fluid p-0">{user.description}</p>
+            <p className="text-end m-0 Container-fluid p-0">
+              {user.description}
+            </p>
           </div>
         </div>
       </div>
