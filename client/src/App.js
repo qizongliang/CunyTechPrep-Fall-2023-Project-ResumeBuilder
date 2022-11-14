@@ -4,44 +4,41 @@ import PostsListPage from "./pages/PostsListPage";
 import PostFormPage from "./pages/PostFormPage";
 import ShowPostPage from "./pages/ShowPostPage";
 import AboutUsPage from "./pages/AboutUsPage";
+import SearchUserPage from "./pages/SearchUserPage";
+import {mockData} from "./constants/mock/users";
 
 import "./App.css";
 
 function Navigation(props) {
   return (
-    <nav className="navbar navbar-expand-sm navbar-dark bg-dark shadow mb-3">
+
+    <nav className="navbar navbar-expand-sm navbar-dark bg-primary shadow mb-3">
       <div className="container-fluid">
         <Link className="navbar-brand" to="/">
-          Micro Blog
+          Tteok
         </Link>
         <ul className="navbar-nav me-auto">
           <li className="nav-item">
-            <NavLink className="nav-link" to="/posts/new">
-              Create a Micro Post
-            </NavLink>
-          </li>
-          <li className="nav-item">
-            <NavLink className="nav-link" to="/about-us">
-              About Us
+            <NavLink className="nav-link" to="/search-user">
+              Search User
             </NavLink>
           </li>
         </ul>
       </div>
     </nav>
+    
   );
 }
 
 function App() {
+
   return (
     <BrowserRouter>
       <Navigation />
       <div className="container-xl text-center">
         <div className="row justify-content-center">
           <Routes>
-            <Route path="/posts/new" element={<PostFormPage />} />
-            <Route path="/posts/:id" element={<ShowPostPage />} />
-            <Route path="/about-us" element={<AboutUsPage />} />
-            <Route path="/" element={<PostsListPage />} />
+            <Route path="/search-user" element={<SearchUserPage/>}/>
           </Routes>
         </div>
       </div>
