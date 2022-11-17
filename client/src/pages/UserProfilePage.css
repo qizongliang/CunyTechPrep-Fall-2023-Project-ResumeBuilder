@@ -1,0 +1,134 @@
+/*Background color and CSS related to bg*/
+.resume_bg {
+  background-color: #cbd5e1;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+.banner_bg {
+  background-color: #505459;
+}
+/*Banner CSS*/
+.tab {
+  overflow: hidden;
+  display: inline-block;
+  float: left;
+  margin-left: 5%;
+  margin-right: 5%;
+  background-color: #656a70;
+}
+/* Style the buttons that are used to open the tab content */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  color: white;
+  cursor: pointer;
+  padding: 5px 8px;
+  transition: 0.3s;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #60a5fa;
+  color: white;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #60a5fa;
+  color: white;
+}
+
+/*about me CSS*/
+.container_a {
+  margin-left: 5%;
+  margin-right: 5%;
+  padding-top: 60px;
+  padding-right: 100px;
+}
+.lines_a {
+  width: 100%;
+  height: 45px;
+  position: relative;
+}
+.lines_a::before {
+  content: '';
+  position: absolute;
+  margin: auto;
+  height: 2px;
+  width: 83%;
+  top: 75%;
+  background-color: #60a5fa;
+}
+.lines_a::before {
+  right: 0;
+}
+.sectionTitle_a {
+  position: absolute;
+  left: 0;
+  color: black;
+  font-size: 40px;
+}
+
+/*WorkExperience CSS*/
+.container_w {
+  margin-left: 5%;
+  margin-right: 5%;
+  padding-top: 60px;
+  padding-right: 100px;
+}
+.lines_w {
+  width: 100%;
+  height: 45px;
+  position: relative;
+}
+.lines_w::before {
+  content: '';
+  position: absolute;
+  margin: auto;
+  height: 2px;
+  width: 72%;
+  top: 75%;
+  background-color: #60a5fa;
+}
+.lines_w::before {
+  right: 0;
+}
+.sectionTitle_w {
+  position: absolute;
+  left: 0;
+  color: black;
+  font-size: 40px;
+}
+/*Project CSS*/
+.container_p {
+  margin-left: 5%;
+  margin-right: 5%;
+  padding-top: 60px;
+  padding-right: 100px;
+}
+.lines_p {
+  width: 100%;
+  height: 45px;
+  position: relative;
+}
+.lines_p::before {
+  content: '';
+  position: absolute;
+  margin: auto;
+  height: 2px;
+  width: 88%;
+  top: 75%;
+  background-color: #60a5fa;
+}
+.lines_p::before {
+  right: 0;
+}
+.sectionTitle_p {
+  position: absolute;
+  left: 0;
+  color: black;
+  font-size: 40px;
+}
