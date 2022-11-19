@@ -5,28 +5,22 @@ import { MOCK_USERS } from '../constants/mock/users'
 import Avatar from '@mui/material/Avatar'
 import { MOCK_PROFILES } from '../constants/mock/profile'
 import './UserProfilePage.css'
+import { width } from '@mui/system'
 
 function UserProfilePage() {
-  // const [allUsers, setAllUsers] = useState([])
-
-  // function getAllUsers() {
-  //   fetch('http://localhost:8000/api/users/all')
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       setAllUsers(data.users)
-  //     })
-  // } // Not yet Implemented
-
-  // useEffect(() => {
-  //   getAllUsers()
-  // }, [])
-
   let displayedUser = MOCK_USERS.filter((user) => user.id <= 1)
-  let displayeProfile = MOCK_PROFILES.ButterRiolu
-
+  let displayedProfile = MOCK_PROFILES.ButterRiolu
   const profile_picture_placeholder =
     'https://play-lh.googleusercontent.com/8ddL1kuoNUB5vUvgDVjYY3_6HwQcrg1K2fd_R8soD-e2QYj8fT9cfhfh3G0hnSruLKec'
-
+  const [Biography, setBiography] = useState(
+    displayedProfile.details['About Me'].biography,
+  )
+  const handleBiographySubmit = (event) => {
+    event.preventDefault()
+    let upDatedBio = event.target.setBiography()
+    event.target.reset()
+  }
+  const [Iseditmode, setIseditmode] = useState(false)
   // Renders Banner
   let banner = (user) => {
     return (
@@ -35,7 +29,7 @@ function UserProfilePage() {
           <img
             src={user[0].profile_picture_url ?? profile_picture_placeholder}
             alt=""
-            class="img-fluid rounded-circle start m-auto float-left"
+            className="img-fluid rounded-circle start m-auto float-left"
             width="150px"
             height="150px"
           />
@@ -61,12 +55,51 @@ function UserProfilePage() {
     )
   }
   //Renders About Me
-  let aboutMe = () => {
+  let aboutMe = (profile) => {
+    let biography = profile.details['About Me'].biography
+    let education = profile.details['About Me'].education
+    const imgstyle = {
+      width: '10px',
+      height: '10px',
+    }
     return (
       <>
         <div className="container_a">
           <div className="lines_a">
             <div className="sectionTitle_a">About Me</div>
+          </div>
+        </div>
+        <div className="container_about">
+          {!Iseditmode ? (
+            <>
+              <div className="description_a">{biography}</div>
+
+              <img
+                onClick={() => setIseditmode(!Iseditmode)}
+                style={imgstyle}
+                src="https://www.pngitem.com/pimgs/m/148-1489006_pencil-icon-png-free-transparent-png.png"
+                alt="https://www.pngitem.com/pimgs/m/148-1489006_pencil-icon-png-free-transparent-png.png"
+              ></img>
+            </>
+          ) : (
+            <form
+              className="description_a_nb"
+              onSubmit={(e) => {
+                handleBiographySubmit(e)
+              }}
+            >
+              <textarea className="form_a" type="text" name="description" />
+              <button type="submit" onClick={() => setIseditmode(!Iseditmode)}>
+                Submit
+              </button>
+            </form>
+          )}
+
+          <div className="education_a">
+            <h5>
+              <a href="https://hunter.cuny.edu/">Education</a>
+            </h5>
+            {education}
           </div>
         </div>
       </>
@@ -103,7 +136,7 @@ function UserProfilePage() {
         {banner(user)}
         <div className="resume_bg">
           {resumeNavBar()}
-          {aboutMe()}
+          {aboutMe(profile)}
           {workExperience()}
           {project()}
         </div>
@@ -113,7 +146,7 @@ function UserProfilePage() {
 
   return (
     <div className="col-12 col-md-12 col-lg-12">
-      {userView(displayedUser, displayeProfile)}
+      {userView(displayedUser, displayedProfile)}
     </div>
   )
 }
