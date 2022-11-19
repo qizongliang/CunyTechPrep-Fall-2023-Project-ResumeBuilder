@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Navigate } from "react-router-dom";
-import ContentBody from "../components/ContentBody";
 import ErrorAlert from "../components/ErrorAlert";
 import { MOCK_USERS } from "../constants/mock/users";
 async function getAllUsers() {} // Not yet Implemented
