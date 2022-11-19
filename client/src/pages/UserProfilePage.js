@@ -12,14 +12,14 @@ function UserProfilePage() {
   let displayedProfile = MOCK_PROFILES.ButterRiolu
   const profile_picture_placeholder =
     'https://play-lh.googleusercontent.com/8ddL1kuoNUB5vUvgDVjYY3_6HwQcrg1K2fd_R8soD-e2QYj8fT9cfhfh3G0hnSruLKec'
+
   const [Biography, setBiography] = useState(
     displayedProfile.details['About Me'].biography,
   )
-  const handleBiographySubmit = (event) => {
-    event.preventDefault()
-    let upDatedBio = event.target.setBiography()
-    event.target.reset()
+  const bioChange = (txt) => {
+    setBiography(txt)
   }
+
   const [Iseditmode, setIseditmode] = useState(false)
   // Renders Banner
   let banner = (user) => {
@@ -54,13 +54,36 @@ function UserProfilePage() {
       </>
     )
   }
+  //Renders Bullets List
+  let schools = (schools) => {
+    const schoolStyle = {
+      padding: '0',
+      margin: '0',
+      border: '0',
+    }
+    return schools.map((s, i) => (
+      <p style={schoolStyle} key={i}>
+        {s}
+      </p>
+    ))
+  }
   //Renders About Me
-  let aboutMe = (profile) => {
-    let biography = profile.details['About Me'].biography
+  let aboutMe = (profile, hookfcn) => {
+    let biography = Biography
     let education = profile.details['About Me'].education
     const imgstyle = {
-      width: '10px',
-      height: '10px',
+      width: '25px',
+      height: '25px',
+      cursor: 'pointer',
+      float: 'right',
+    }
+    const handleBiographySubmit = (event) => {
+      event.preventDefault()
+      let upDatedBio = event.target.description.value
+      console.log(event.target.description.value)
+      bioChange(upDatedBio)
+      setIseditmode(!Iseditmode)
+      event.target.reset()
     }
     return (
       <>
@@ -72,14 +95,16 @@ function UserProfilePage() {
         <div className="container_about">
           {!Iseditmode ? (
             <>
-              <div className="description_a">{biography}</div>
+              <div className="description_a">
+                {biography}
 
-              <img
-                onClick={() => setIseditmode(!Iseditmode)}
-                style={imgstyle}
-                src="https://www.pngitem.com/pimgs/m/148-1489006_pencil-icon-png-free-transparent-png.png"
-                alt="https://www.pngitem.com/pimgs/m/148-1489006_pencil-icon-png-free-transparent-png.png"
-              ></img>
+                <img
+                  onClick={() => setIseditmode(!Iseditmode)}
+                  style={imgstyle}
+                  src="https://www.pngitem.com/pimgs/m/148-1489006_pencil-icon-png-free-transparent-png.png"
+                  alt="https://www.pngitem.com/pimgs/m/148-1489006_pencil-icon-png-free-transparent-png.png"
+                />
+              </div>
             </>
           ) : (
             <form
@@ -88,10 +113,13 @@ function UserProfilePage() {
                 handleBiographySubmit(e)
               }}
             >
-              <textarea className="form_a" type="text" name="description" />
-              <button type="submit" onClick={() => setIseditmode(!Iseditmode)}>
-                Submit
-              </button>
+              <textarea
+                className="form_a"
+                type="text"
+                name="description"
+                defaultValue={biography}
+              />
+              <button type="submit">Submit</button>
             </form>
           )}
 
@@ -99,14 +127,23 @@ function UserProfilePage() {
             <h5>
               <a href="https://hunter.cuny.edu/">Education</a>
             </h5>
-            {education}
+            {schools(education)}
           </div>
         </div>
       </>
     )
   }
+  //Renders Bullets List
+  let bullets = (bullets) => {
+    return bullets.map((b, i) => <p key={i}>{b}</p>)
+  }
+
   //Renders workExperience
-  let workExperience = () => {
+  let workExperience = (profile) => {
+    let workExpList = profile.details['Work Experience']
+    let validateYear = (year) => {
+      return year != null
+    }
     return (
       <>
         <div className="container_w">
@@ -114,6 +151,31 @@ function UserProfilePage() {
             <div className="sectionTitle_w">Work Experience</div>
           </div>
         </div>
+        {workExpList.map((work) => {
+          return (
+            <div key={work.id} className="container_workExp">
+              <h5 className="workExp_title">{work.job_title}</h5>
+              {validateYear(work.end_year) ? (
+                <h5 className="workExp_date">
+                  {work.start_month +
+                    ' ' +
+                    work.start_year +
+                    ' ' +
+                    work.end_year +
+                    ' ' +
+                    work.end_month}
+                </h5>
+              ) : (
+                <h5 className="workExp_date">
+                  {work.start_month + ' ' + work.start_year + ' - Present'}
+                </h5>
+              )}
+              <br />
+              <br />
+              {bullets(work.bullets)}
+            </div>
+          )
+        })}
       </>
     )
   }
@@ -137,7 +199,7 @@ function UserProfilePage() {
         <div className="resume_bg">
           {resumeNavBar()}
           {aboutMe(profile)}
-          {workExperience()}
+          {workExperience(profile, bioChange)}
           {project()}
         </div>
       </>
