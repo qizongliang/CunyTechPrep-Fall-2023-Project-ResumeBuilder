@@ -1,13 +1,9 @@
 import React from "react";
-import { BrowserRouter, Routes, Route, Link, NavLink } from "react-router-dom";
-import PostsListPage from "./pages/PostsListPage";
-import PostFormPage from "./pages/PostFormPage";
-import ShowPostPage from "./pages/ShowPostPage";
-import AboutUsPage from "./pages/AboutUsPage";
+import { BrowserRouter, Routes, Route, NavLink } from "react-router-dom";
+
 import SearchUserPage from "./pages/SearchUserPage";
 import ProfilePage from "./pages/ProfilePage";
 import { Avatar } from "@mui/material";
-import { mockData } from "./constants/mock/users";
 
 import "./App.css";
 import ContentBody from "./components/ContentBody";

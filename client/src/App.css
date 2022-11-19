@@ -7,6 +7,11 @@ nav {
   justify-content: center;
 }
 
+body {
+  overflow-x: hidden;
+  margin: 0;
+}
+
 .nav-link-container {
   width: min(1200px, 100vw);
   display: flex;

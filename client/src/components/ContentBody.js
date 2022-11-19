@@ -10,7 +10,9 @@ const classes = {
     height: "100vh",
     width: "1200px",
     display: "flex",
-    justifyContent: "center",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "flex-start",
   },
 };
 
