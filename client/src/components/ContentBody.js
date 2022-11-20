@@ -7,7 +7,7 @@ const classes = {
   },
   content: {
     backgroundColor: "#CBD5E1",
-    height: "100vh",
+    minHeight: "100vh",
     width: "1200px",
     display: "flex",
     flexDirection: "column",
