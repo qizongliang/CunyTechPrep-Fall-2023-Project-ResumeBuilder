@@ -14,6 +14,7 @@ export default function TabGroups({ contents, ComponentWrapper }) {
     setCurrentTab(newTabIndex);
   }
 
+  const tabHeight = "20px";
   return (
     <div>
       <Tabs
@@ -22,19 +23,21 @@ export default function TabGroups({ contents, ComponentWrapper }) {
         TabIndicatorProps={{
           style: { backgroundColor: "rgba(0,0,0,0)" },
         }}
+        sx={{height: "10px"}}
       >
+
         {contents.map((content, idx) => {
           return (
             <Tab
               label={
-                <div style={{ fontSize: "1.25rem", color: "white" }}>
+                <div style={{ fontSize: "1.15rem", color: "white" }}>
                   {content.label}
                 </div>
               }
               key={content.label}
               style={{
-                margin: 0,
-                padding: 0,
+                minHeight: "auto",
+                padding: "0.25rem",
                 textTransform: "none",
                 backgroundColor:
                   currentTab === idx ? "#60A5FA" : "rgba(0,0,0,0.2)",
