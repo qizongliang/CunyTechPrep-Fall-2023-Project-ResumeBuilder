@@ -1,47 +1,43 @@
 import React from "react";
-import { BrowserRouter, Routes, Route, Link, NavLink } from "react-router-dom";
-import PostsListPage from "./pages/PostsListPage";
-import PostFormPage from "./pages/PostFormPage";
-import ShowPostPage from "./pages/ShowPostPage";
-import AboutUsPage from "./pages/AboutUsPage";
+import { BrowserRouter, Routes, Route, NavLink } from "react-router-dom";
+
 import SearchUserPage from "./pages/SearchUserPage";
-import {mockData} from "./constants/mock/users";
+import ProfilePage from "./pages/ProfilePage";
+import { Avatar } from "@mui/material";
 
 import "./App.css";
+import ContentBody from "./components/ContentBody";
+
+const userIconStyle = { width: "32px", height: "32px" };
 
 function Navigation(props) {
   return (
-
-    <nav className="navbar navbar-expand-sm navbar-dark bg-primary shadow mb-3">
-      <div className="container-fluid">
-        <Link className="navbar-brand" to="/">
-          Tteok
-        </Link>
-        <ul className="navbar-nav me-auto">
-          <li className="nav-item">
-            <NavLink className="nav-link" to="/search-user">
-              Search User
-            </NavLink>
-          </li>
-        </ul>
-      </div>
+    <nav>
+      <span className="nav-link-container">
+        <span style={{ display: "flex", gap: "2rem" }}>
+          <span style={{ fontSize: "32px", color: "white" }}>Tteok</span>
+          <NavLink className="nav-link" to="/search-user">
+            Search User
+          </NavLink>
+        </span>
+        <NavLink className="nav-link" to="/profile">
+          <Avatar src="" style={userIconStyle} />
+        </NavLink>
+      </span>
     </nav>
-    
   );
 }
 
 function App() {
-
   return (
     <BrowserRouter>
       <Navigation />
-      <div className="container-xl text-center">
-        <div className="row justify-content-center">
-          <Routes>
-            <Route path="/search-user" element={<SearchUserPage/>}/>
-          </Routes>
-        </div>
-      </div>
+      <ContentBody>
+        <Routes>
+          <Route path="/search-user" element={<SearchUserPage />} />
+          <Route path="/profile" element={<ProfilePage />} />
+        </Routes>
+      </ContentBody>
     </BrowserRouter>
   );
 }
