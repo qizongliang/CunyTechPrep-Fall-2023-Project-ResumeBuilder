@@ -12,9 +12,8 @@ export default function ResumeThread({ resumeThread }) {
         style={{
           display: "flex",
           justifyContent: "center",
-          marginInline: "2rem",
-        }}
-      >
+          marginInline: "2rem"
+        }}>
         <Comments comments={resumeThread.comments} />
       </div>
     </>

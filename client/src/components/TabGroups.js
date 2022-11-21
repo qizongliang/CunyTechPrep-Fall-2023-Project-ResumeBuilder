@@ -21,11 +21,10 @@ export default function TabGroups({ contents, ComponentWrapper }) {
         value={currentTab}
         onChange={handleChange}
         TabIndicatorProps={{
-          style: { backgroundColor: "rgba(0,0,0,0)" },
+          style: { backgroundColor: "rgba(0,0,0,0)" }
         }}
-        sx={{height: "10px"}}
+        sx={{ height: "10px" }}
       >
-
         {contents.map((content, idx) => {
           return (
             <Tab
@@ -40,7 +39,7 @@ export default function TabGroups({ contents, ComponentWrapper }) {
                 padding: "0.25rem",
                 textTransform: "none",
                 backgroundColor:
-                  currentTab === idx ? "#60A5FA" : "rgba(0,0,0,0.2)",
+                  currentTab === idx ? "#60A5FA" : "rgba(0,0,0,0.2)"
               }}
             />
           );
