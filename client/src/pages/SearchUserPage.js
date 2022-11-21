@@ -50,25 +50,25 @@ function SearchUserPage() {
   if (success) return <Navigate to="/" />;
 
   return (
-      <div className="col-10 col-md-8 col-lg-7">
-        {error && <ErrorAlert details={"Failed to save the content"} />}
-        <form onSubmit={handleSubmit}>
-          <div className="input-group">
-            <input
-              type="text"
-              placeholder="Search Username here..."
-              value={content}
-              className="form-control"
-              onChange={handleContentChange}
-              autoFocus
-            />
-            <button type="submit" className="btn btn-primary">
-              Search
-            </button>
-          </div>
-        </form>
-        {userView}
-      </div>
+    <div className="col-10 col-md-8 col-lg-7">
+      {error && <ErrorAlert details={"Failed to save the content"} />}
+      <form onSubmit={handleSubmit}>
+        <div className="input-group">
+          <input
+            type="text"
+            placeholder="Search Username here..."
+            value={content}
+            className="form-control"
+            onChange={handleContentChange}
+            autoFocus
+          />
+          <button type="submit" className="btn btn-primary">
+            Search
+          </button>
+        </div>
+      </form>
+      {userView}
+    </div>
   );
 }
 
