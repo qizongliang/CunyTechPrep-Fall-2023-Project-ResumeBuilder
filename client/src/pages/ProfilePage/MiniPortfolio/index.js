@@ -1,7 +1,6 @@
 import React from 'react'
+import AboutMe from './AboutMe/aboutMe'
 
 export default function MiniPortfolio(props) {
-  return (
-    <div>index</div>
-  )
+  return <AboutMe userInfo={props.userInfo} />
 }
