@@ -38,7 +38,12 @@ export default function ProfilePage() {
     'https://storage.googleapis.com/katsudon-assets/user-profiles/6306b34920cf5f80f7d0c20d/pfp.jpg'
 
   const contents = [
-    { label: 'Profile', component: <MiniPortfolio userInfo={userInfo} /> },
+    {
+      label: 'Profile',
+      component: (
+        <MiniPortfolio userInfo={userInfo} workExperiences={workExperiences} />
+      ),
+    },
     {
       label: 'Resume',
       component: <ResumeThread resumeThread={resumeThread} />,
