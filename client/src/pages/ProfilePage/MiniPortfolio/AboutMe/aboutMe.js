@@ -5,7 +5,7 @@ import Grid from "@mui/material/Grid";
 import { Typography } from "@mui/material";
 
 const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+  backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
   ...theme.typography.body2,
   textAlign: "center",
   color: theme.palette.text.secondary,
@@ -43,5 +43,5 @@ export default function AboutMe(props) {
         </Grid>
       </Grid>
     </>
-  )
+  );
 }
