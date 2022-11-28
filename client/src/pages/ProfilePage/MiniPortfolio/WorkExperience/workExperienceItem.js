@@ -4,7 +4,7 @@ import { Card, CardContent, Typography, Grid } from "@mui/material";
 let displayEnddate = (end_month, end_year) => {
   return (
     <>
-      {end_month}
+      {displayMonthInWord(end_month)}
       {end_year}
     </>
   );
