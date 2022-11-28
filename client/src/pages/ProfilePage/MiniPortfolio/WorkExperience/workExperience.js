@@ -1,12 +1,12 @@
-import * as React from 'react'
-import { Typography } from '@mui/material'
-import WorkExperienceItem from './workExperienceItem'
+import * as React from "react";
+import { Typography } from "@mui/material";
+import WorkExperienceItem from "./workExperienceItem";
 
 export default function WorkExperience(props) {
-  let workExpItems = props.workItems
+  let workExpItems = props.workItems;
   let displayWorkItem = workExpItems.map((item) => {
-    return <WorkExperienceItem key={item.id} info={item} />
-  })
+    return <WorkExperienceItem key={item.id} info={item} />;
+  });
 
   return (
     <>
@@ -15,5 +15,5 @@ export default function WorkExperience(props) {
       </Typography>
       {displayWorkItem}
     </>
-  )
+  );
 }
