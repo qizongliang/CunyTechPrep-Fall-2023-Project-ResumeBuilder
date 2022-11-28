@@ -69,7 +69,6 @@ let displayMonthInWord = (month) => {
 };
 
 export default function WorkExperienceItem(props) {
-  console.log(props.info);
   return (
     <Card
       sx={{
