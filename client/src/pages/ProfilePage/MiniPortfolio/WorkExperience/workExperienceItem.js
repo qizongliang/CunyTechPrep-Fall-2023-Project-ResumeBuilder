@@ -100,7 +100,7 @@ export default function WorkExperienceItem(props) {
             </Typography>
           </Grid>
 
-          <Grid item xs={3} sx={{ textAlign: "center" }}>
+          <Grid item xs={3} sx={{ textAlign: "right" }}>
             <Typography
               sx={{
                 fontSize: 15,
