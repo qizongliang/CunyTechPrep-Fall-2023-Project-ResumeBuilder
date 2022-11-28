@@ -2,7 +2,7 @@ import * as React from "react";
 import { Card, CardContent, Typography, Grid } from "@mui/material";
 import { displayMonthInWord } from "../utilsDisplayMonthInWord";
 
-export default function WorkExperienceItem(props) {
+let displayEnddate = (end_month, end_year) => {
   return (
     <Card
       sx={{
