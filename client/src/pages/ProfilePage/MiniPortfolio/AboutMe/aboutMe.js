@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { styled } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
 import { Typography } from "@mui/material";
-import { MOCK_PROFILES } from "../../../../constants/mock/profile";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -13,11 +12,9 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 export default function AboutMe(props) {
-  let displayedProfile = MOCK_PROFILES.ButterRiolu;
-  const [Biography, setBiography] = useState(
-    displayedProfile.details["About Me"].biography
-  );
+  const [Biography, setBiography] = useState(props.description + "Deez");
 
+  console.log(props);
   let displayEducation = (education) => {
     return (
       <>
@@ -42,9 +39,7 @@ export default function AboutMe(props) {
           <Item>{Biography}</Item>
         </Grid>
         <Grid item xs={4}>
-          <Item>
-            {displayEducation(displayedProfile.details["About Me"].education)}
-          </Item>
+          <Item>{displayEducation("Hunter College")}</Item>
         </Grid>
       </Grid>
     </>
