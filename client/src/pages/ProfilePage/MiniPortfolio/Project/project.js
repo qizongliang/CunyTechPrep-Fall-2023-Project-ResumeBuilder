@@ -1,10 +1,10 @@
 import * as React from "react";
 import { Typography } from "@mui/material";
-import { MOCK_PROFILES } from "../../../../constants/mock/profile";
 import ProjectItem from "./projectItem";
 
-export default function project(props) {
-  let displayedProjects = MOCK_PROFILES.ButterRiolu.details.Projects;
+export default function Project(props) {
+  let displayedProjects = props.projects;
+  console.log(props);
 
   let displayProjectItem = displayedProjects.map((item) => {
     return <ProjectItem key={item.id} info={item} />;

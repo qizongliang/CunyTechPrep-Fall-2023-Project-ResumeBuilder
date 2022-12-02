@@ -9,7 +9,7 @@ export default function MiniPortfolio(props) {
       <br />
       <WorkExperience workItems={props.workExperiences} />
       <br />
-      <Project />
+      <Project projects={props.projects} />
       <br />
     </>
   );

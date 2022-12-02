@@ -14,15 +14,9 @@ const Item = styled(Paper)(({ theme }) => ({
 
 export default function AboutMe(props) {
   let displayedProfile = MOCK_PROFILES.ButterRiolu;
-
   const [Biography, setBiography] = useState(
     displayedProfile.details["About Me"].biography
   );
-
-  const bioChange = (txt) => {
-    setBiography(txt);
-  };
-  const [Iseditmode, setIseditmode] = useState(false);
 
   let displayEducation = (education) => {
     return (
