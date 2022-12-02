@@ -1,21 +1,43 @@
-import { display } from "@mui/system";
+import { useState, useEffect } from "react";
 import Comments from "./Comments";
 import ResumeBox from "./ResumeBox";
+import { getProfile } from "../../../api/user";
 
-export default function ResumeThread({ resumeThread }) {
-  const { resume_url } = resumeThread.post;
+export default function ResumeThread() {
+  const [resumeThread, setResumeThread] = useState(null);
 
-  return (
+  async function loadProfile() {
+    await getProfile(1)
+      .then((res) => {
+        setResumeThread(res.current_resume);
+      })
+      .catch(console.error);
+  }
+
+  useEffect(() => {
+    loadProfile();
+  }, []);
+
+  return !!resumeThread ? (
     <>
-      <ResumeBox url={resume_url} />
+      <ResumeBox url={resumeThread.post.resume_url} />
       <div
         style={{
           display: "flex",
-          justifyContent: "center",
-          marginInline: "2rem"
-        }}>
-        <Comments comments={resumeThread.comments} />
+          flexDirection: "column",
+          marginInline: "2rem",
+          alignItems: "center",
+          width: "min(100vw,800px)",
+        }}
+      >
+        <Comments
+          comments={resumeThread.comments}
+          postId={resumeThread.post.id}
+          retrieveProfile={loadProfile}
+        />
       </div>
     </>
+  ) : (
+    <>Loading</>
   );
 }
