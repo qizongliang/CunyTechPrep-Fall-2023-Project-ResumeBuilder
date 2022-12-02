@@ -53,13 +53,13 @@ export default function WorkExperienceItem(props) {
             </Typography>
           </Grid>
         </Grid>
-        <Typography>
-          <ul>
-            {props.info.bullets.map((str, i) => {
-              return <li key={i}>{str}</li>;
-            })}
-          </ul>
-        </Typography>
+
+        <ul>
+          {props.info.bullets.map((str, i) => {
+            return <li key={i}>{str}</li>;
+          })}
+        </ul>
+
         <span style={{ display: "flex", gap: "10px" }}>
           {props.info.tools_used.map((str, i) => {
             return (
