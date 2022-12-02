@@ -10,9 +10,7 @@ export default function WorkExperience(props) {
 
   return (
     <>
-      <Typography variant="h3" component="h2">
-        Work Experience
-      </Typography>
+      <Typography variant="h5">Work Experience</Typography>
       {displayWorkItem}
     </>
   );

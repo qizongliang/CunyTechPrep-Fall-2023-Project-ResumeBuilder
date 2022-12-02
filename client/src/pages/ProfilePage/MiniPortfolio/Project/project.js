@@ -12,9 +12,7 @@ export default function project(props) {
 
   return (
     <>
-      <Typography variant="h3" component="h2">
-        Project
-      </Typography>
+      <Typography variant="h5">Project</Typography>
       {displayProjectItem}
     </>
   );

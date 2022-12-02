@@ -1,72 +1,6 @@
 import * as React from "react";
 import { Card, CardContent, Typography, Grid } from "@mui/material";
-
-let displayEnddate = (end_month, end_year) => {
-  return (
-    <>
-      {displayMonthInWord(end_month)}
-      {end_year}
-    </>
-  );
-};
-let displayMonthInWord = (month) => {
-  let word = " ";
-
-  switch (month) {
-    case 1:
-      word = "Jan.";
-      break;
-
-    case 2:
-      word = "Feb.";
-      break;
-
-    case 3:
-      word = "Mar.";
-      break;
-
-    case 4:
-      word = "Apr.";
-      break;
-
-    case 5:
-      word = "May.";
-      break;
-
-    case 6:
-      word = "Jun.";
-      break;
-
-    case 7:
-      word = "Jul.";
-      break;
-
-    case 8:
-      word = "Aug.";
-      break;
-
-    case 9:
-      word = "Sep.";
-      break;
-
-    case 10:
-      word = "Oct.";
-      break;
-
-    case 11:
-      word = "Nov.";
-      break;
-
-    case 12:
-      word = "Dec.";
-      break;
-
-    default:
-      word = "Null";
-      break;
-  }
-  return word;
-};
+import { displayMonthInWord } from "../utilsDisplayMonthInWord";
 
 export default function WorkExperienceItem(props) {
   return (
@@ -108,19 +42,33 @@ export default function WorkExperienceItem(props) {
               {displayMonthInWord(props.info.start_month)}{" "}
               {props.info.start_year}
               {" - "}
-              {props.info.end_year === null
-                ? "Present"
-                : displayEnddate(props.info.end_month, props.info.end_year)}
+              {props.info.end_year === null ? (
+                "Present"
+              ) : (
+                <>
+                  {displayMonthInWord(props.info.end_month)}
+                  {props.info.end_year}
+                </>
+              )}
             </Typography>
           </Grid>
         </Grid>
         <Typography>
           <ul>
-            {props.info.bullets.map((str) => {
-              return <li>{str}</li>;
+            {props.info.bullets.map((str, i) => {
+              return <li key={i}>{str}</li>;
             })}
           </ul>
         </Typography>
+        <span style={{ display: "flex", gap: "10px" }}>
+          {props.info.tools_used.map((str, i) => {
+            return (
+              <code key={i} style={{ color: "#569cd6" }}>
+                {str}
+              </code>
+            );
+          })}
+        </span>
       </CardContent>
     </Card>
   );

@@ -34,9 +34,7 @@ export default function AboutMe(props) {
   };
   return (
     <>
-      <Typography variant="h3" component="h2">
-        About Me
-      </Typography>
+      <Typography variant="h5">About Me</Typography>
 
       <Grid
         container
