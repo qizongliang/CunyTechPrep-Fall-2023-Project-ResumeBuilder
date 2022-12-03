@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Typography, Modal, Button, Box } from "@mui/material";
+import { Typography, Modal, Button, Box, Grid } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import WorkExperienceItem from "./workExperienceItem";
 const style = {
@@ -24,10 +24,21 @@ export default function WorkExperience(props) {
 
   return (
     <>
-      <Typography variant="h5">Work Experience</Typography>
-      <Button onClick={handleOpen} sx={{ m: 2 }} endIcon={<AddIcon />}>
-        Add Experience
-      </Button>
+      <Grid container>
+        <Grid item xs={6}>
+          <Typography variant="h5" align="center">
+            Work Experience
+          </Typography>
+        </Grid>
+        <Grid item xs={6}>
+          <Box textAlign="center">
+            <Button onClick={handleOpen} endIcon={<AddIcon />}>
+              Add Experience
+            </Button>
+          </Box>
+        </Grid>
+      </Grid>
+
       <Modal
         open={open}
         onClose={handleClose}
