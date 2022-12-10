@@ -1,6 +1,7 @@
 import { Avatar, IconButton } from "@mui/material";
 import { Fragment } from "react";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import CreateCommentBox from "./CreateCommentBox";
 
 const classes = {
   commentSection: {
@@ -9,28 +10,28 @@ const classes = {
     width: "min(100vw,800px)",
     padding: "1rem",
     rowGap: "1.5rem",
-    columnGap: "1rem"
+    columnGap: "1rem",
   },
   userSection: {
     gridColumn: "1 / span 2",
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
-    alignItems: "flex-end"
+    alignItems: "flex-end",
   },
   userIcon: {
     width: "36px",
     height: "36px",
-    border: "2px solid white"
+    border: "2px solid white",
   },
   username: {
-    fontSize: "12px"
+    fontSize: "12px",
   },
   commentBox: {
     gridColumn: "3 / auto-fill",
     backgroundColor: "white",
     minHeight: "50px",
-    borderRadius: "8px"
+    borderRadius: "8px",
   },
   likes: {
     height: "100%",
@@ -39,19 +40,26 @@ const classes = {
     borderRadius: "8px 0 0 8px",
     display: "flex",
     flexDirection: "column",
-    alignItems: "center"
+    alignItems: "center",
   },
   commentContent: {
     fontSize: "14px",
     width: "100%",
-    padding: "0.25rem"
-  }
+    padding: "0.25rem",
+  },
 };
 
-export default function Comments({ comments }) {
+export default function Comments({ comments, postId, retrieveProfile }) {
   const likeButtonWidth = "18px";
   return (
     <div style={classes.commentSection}>
+      <div
+        style={{
+          gridColumn: "3 / 18",
+        }}
+      >
+        <CreateCommentBox postId={postId} retrieveProfile={retrieveProfile} />
+      </div>
       {comments.map((userComment, idx) => {
         const { username, profile_picture_url, comment, likes } = userComment;
         return (

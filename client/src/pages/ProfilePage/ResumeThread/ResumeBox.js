@@ -12,7 +12,7 @@ const classes = {
 export default function ResumeBox({ url }) {
   return (
     <div style={classes.resumeContainer}>
-      <iframe src={`${url}#zoom=95`} style={classes.resumeFrame}>
+      <iframe src={`${url}#zoom=95`} style={classes.resumeFrame} key={url}>
         Browser not compatible.
       </iframe>
     </div>

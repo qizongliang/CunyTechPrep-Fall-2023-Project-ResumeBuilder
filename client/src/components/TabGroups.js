@@ -14,7 +14,6 @@ export default function TabGroups({ contents, ComponentWrapper }) {
     setCurrentTab(newTabIndex);
   }
 
-  const tabHeight = "20px";
   return (
     <div>
       <Tabs
