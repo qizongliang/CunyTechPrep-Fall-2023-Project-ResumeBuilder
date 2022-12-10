@@ -8,7 +8,7 @@ const classes = {
     minHeight: "100px",
     border: "1px solid #B1B1B1",
     backgroundColor: "white",
-    padding: "0.5rem"
+    padding: "0.5rem",
   },
 };
 export default function AboutMe(props) {
@@ -23,23 +23,27 @@ export default function AboutMe(props) {
   };
   return (
     <>
-      <Grid container>
-        <Grid item xs={6}>
-          <Typography variant="h5" align="center">
-            About Me
-          </Typography>
-        </Grid>
-        <Grid item xs={6}></Grid>
-      </Grid>
-
-      <Grid
-        container
-        direction="row"
-        justifyContent="flex-end"
-        alignItems="stretch"
-        spacing={2}
-        sx={{ marginTop: 1 }}
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: "0.5rem",
+          marginInline: "0.5rem",
+        }}
       >
+        <Typography variant="h5" align="center">
+          About Me
+        </Typography>
+        <div
+          style={{
+            flexGrow: 1,
+            height: "2px",
+            backgroundColor: "#60A5FA",
+          }}
+        />
+      </div>
+
+      <Grid container spacing={2}>
         <Grid item xs={8}>
           <div style={classes.detailsBox}>{props.userInfo.description}</div>
         </Grid>

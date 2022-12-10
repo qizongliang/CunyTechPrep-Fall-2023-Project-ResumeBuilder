@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Card, CardContent, Typography, Grid } from "@mui/material";
+import { Typography, Grid } from "@mui/material";
 import { displayMonthInWord } from "../utilsDisplayMonthInWord";
 
 const classes = {

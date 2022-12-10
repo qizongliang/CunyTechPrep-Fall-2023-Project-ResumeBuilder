@@ -2,7 +2,6 @@ import * as React from "react";
 import {
   Typography,
   Button,
-  Box,
   Grid,
   TextField,
   TextareaAutosize,
@@ -29,7 +28,7 @@ export default function WorkExperience(props) {
           display: "flex",
           alignItems: "center",
           gap: "0.5rem",
-          marginInline: "1rem",
+          marginInline: "0.5rem",
         }}
       >
         <Typography variant="h5" align="center">
@@ -43,7 +42,7 @@ export default function WorkExperience(props) {
           }}
         />
         <Button onClick={handleOpen} endIcon={<AddIcon />}>
-          Add Project
+          Add Experience
         </Button>
       </div>
       <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
