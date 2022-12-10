@@ -1,21 +1,17 @@
-import React, { useState } from "react";
-import { styled } from "@mui/material/styles";
-import Paper from "@mui/material/Paper";
+import React from "react";
 import Grid from "@mui/material/Grid";
 import { Typography } from "@mui/material";
 
-const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
-  ...theme.typography.body2,
-  textAlign: "center",
-  color: theme.palette.text.secondary,
-}));
-
+const classes = {
+  detailsBox: {
+    width: "100%",
+    minHeight: "100px",
+    border: "1px solid #B1B1B1",
+    backgroundColor: "white",
+    padding: "0.5rem"
+  },
+};
 export default function AboutMe(props) {
-  const [Biography, setBiography] = useState(
-    "I'm a guy who's in my Nth year in this college, studying this field that you've probably never heard of. I do this and that while performing this for fun. Currently trying out this weird thing, hoping to find something cool. But I really suck at doing this, so I'm dealing that by practicing this thing."
-  );
-
   console.log(props);
   let displayEducation = (education) => {
     return (
@@ -45,10 +41,12 @@ export default function AboutMe(props) {
         sx={{ marginTop: 1 }}
       >
         <Grid item xs={8}>
-          <Item>{Biography}</Item>
+          <div style={classes.detailsBox}>{props.userInfo.description}</div>
         </Grid>
         <Grid item xs={4}>
-          <Item>{displayEducation("Hunter College")}</Item>
+          <div style={classes.detailsBox}>
+            {displayEducation("Hunter College")}
+          </div>
         </Grid>
       </Grid>
     </>

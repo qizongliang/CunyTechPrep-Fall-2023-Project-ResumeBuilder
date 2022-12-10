@@ -24,20 +24,31 @@ export default function Project(props) {
 
   return (
     <>
-      <Grid container>
-        <Grid item xs={6}>
-          <Typography variant="h5" align="center">
-            Project
-          </Typography>
-        </Grid>
-        <Grid item xs={6}>
-          <Box textAlign="center">
-            <Button onClick={handleOpen} endIcon={<AddIcon />}>
-              Add Project
-            </Button>
-          </Box>
-        </Grid>
-      </Grid>
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: "0.5rem",
+          marginInline: "1rem",
+        }}
+      >
+        <Typography variant="h5" align="center">
+          Projects
+        </Typography>
+        <div
+          style={{
+            flexGrow: 1,
+            height: "2px",
+            backgroundColor: "#60A5FA",
+          }}
+        />
+        <Button onClick={handleOpen} endIcon={<AddIcon />}>
+          Add Project
+        </Button>
+      </div>
+      <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+        {displayProjectItem}
+      </div>
       <Modal
         aria-labelledby="close-modal-title"
         open={open}
@@ -141,7 +152,6 @@ export default function Project(props) {
           </form>
         </ModalDialog>
       </Modal>
-      {displayProjectItem}
     </>
   );
 }

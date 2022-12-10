@@ -24,21 +24,31 @@ export default function WorkExperience(props) {
 
   return (
     <>
-      <Grid container>
-        <Grid item xs={6}>
-          <Typography variant="h5" align="center">
-            Work Experience
-          </Typography>
-        </Grid>
-        <Grid item xs={6}>
-          <Box textAlign="center">
-            <Button onClick={handleOpen} endIcon={<AddIcon />}>
-              Add Experience
-            </Button>
-          </Box>
-        </Grid>
-      </Grid>
-
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: "0.5rem",
+          marginInline: "1rem",
+        }}
+      >
+        <Typography variant="h5" align="center">
+          Work Experiences
+        </Typography>
+        <div
+          style={{
+            flexGrow: 1,
+            height: "2px",
+            backgroundColor: "#60A5FA",
+          }}
+        />
+        <Button onClick={handleOpen} endIcon={<AddIcon />}>
+          Add Project
+        </Button>
+      </div>
+      <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+        {displayWorkItem}
+      </div>
       <Modal
         aria-labelledby="close-modal-title"
         open={open}
@@ -142,7 +152,6 @@ export default function WorkExperience(props) {
           </form>
         </ModalDialog>
       </Modal>
-      {displayWorkItem}
     </>
   );
 }

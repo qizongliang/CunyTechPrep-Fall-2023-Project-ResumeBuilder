@@ -4,12 +4,10 @@ import WorkExperience from "./WorkExperience/workExperience";
 import Project from "./Project/project";
 export default function MiniPortfolio(props) {
   return (
-    <>
+    <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
       <AboutMe userInfo={props.userInfo} />
-      <br />
       <WorkExperience workItems={props.workExperiences} />
       <Project projects={props.projects} />
-      <br />
-    </>
+    </div>
   );
 }
