@@ -12,7 +12,9 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 export default function AboutMe(props) {
-  const [Biography, setBiography] = useState(props.description + "Deez");
+  const [Biography, setBiography] = useState(
+    "I'm a guy who's in my Nth year in this college, studying this field that you've probably never heard of. I do this and that while performing this for fun. Currently trying out this weird thing, hoping to find something cool. But I really suck at doing this, so I'm dealing that by practicing this thing."
+  );
 
   console.log(props);
   let displayEducation = (education) => {
@@ -25,7 +27,14 @@ export default function AboutMe(props) {
   };
   return (
     <>
-      <Typography variant="h5">About Me</Typography>
+      <Grid container>
+        <Grid item xs={6}>
+          <Typography variant="h5" align="center">
+            About Me
+          </Typography>
+        </Grid>
+        <Grid item xs={6}></Grid>
+      </Grid>
 
       <Grid
         container

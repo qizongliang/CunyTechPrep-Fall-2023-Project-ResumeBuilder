@@ -6,6 +6,7 @@ export default function MiniPortfolio(props) {
   return (
     <>
       <AboutMe userInfo={props.userInfo} />
+      <br />
       <WorkExperience workItems={props.workExperiences} />
       <Project projects={props.projects} />
       <br />

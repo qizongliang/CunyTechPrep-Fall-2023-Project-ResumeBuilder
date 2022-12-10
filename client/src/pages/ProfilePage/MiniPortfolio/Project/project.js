@@ -1,26 +1,23 @@
 import * as React from "react";
-import { Typography, Modal, Button, Box, Grid, Divider } from "@mui/material";
+import {
+  Typography,
+  Button,
+  Box,
+  Grid,
+  TextField,
+  TextareaAutosize,
+} from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
+import Modal from "@mui/joy/Modal";
+import ModalDialog from "@mui/joy/ModalDialog";
+import ModalClose from "@mui/joy/ModalClose";
+import Stack from "@mui/joy/Stack";
 import ProjectItem from "./projectItem";
-
-const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 400,
-  bgcolor: "background.paper",
-  border: "2px solid #000",
-  boxShadow: 24,
-  p: 4,
-};
 
 export default function Project(props) {
   let displayedProjects = props.projects;
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
-
   let displayProjectItem = displayedProjects.map((item) => {
     return <ProjectItem key={item.id} info={item} />;
   });
@@ -42,19 +39,107 @@ export default function Project(props) {
         </Grid>
       </Grid>
       <Modal
+        aria-labelledby="close-modal-title"
         open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
+        onClose={(event, reason) => {
+          if (reason && reason === "backdropClick") return;
+          setOpen(false);
+        }}
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
       >
-        <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            Text in a modal
+        <ModalDialog
+          aria-labelledby="basic-modal-dialog-title"
+          aria-describedby="basic-modal-dialog-description"
+          sx={{
+            maxWidth: 500,
+            borderRadius: "md",
+            p: 3,
+            boxShadow: "lg",
+          }}
+        >
+          <ModalClose variant="outlined" />
+
+          <Typography
+            component="h2"
+            id="Modaltitle"
+            level="h4"
+            textColor="inherit"
+            fontWeight="lg"
+          >
+            Add Project
           </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-          </Typography>
-        </Box>
+
+          <form
+            onSubmit={(event) => {
+              event.preventDefault();
+              setOpen(false);
+            }}
+          >
+            <Stack spacing={2}>
+              <TextField
+                autoFocus
+                margin="dense"
+                label="Title"
+                fullWidth
+                variant="standard"
+              />
+              <TextField
+                autoFocus
+                margin="dense"
+                label="Brief"
+                fullWidth
+                variant="standard"
+              />
+              <Grid container>
+                <Grid item xs={6}>
+                  <TextField
+                    id="start_month"
+                    label="Start Month"
+                    variant="outlined"
+                  />
+                </Grid>
+                <Grid item xs={6}>
+                  <TextField
+                    id="start_year"
+                    label="Start Year"
+                    variant="outlined"
+                  />
+                </Grid>
+              </Grid>
+              <Grid container>
+                <Grid item xs={6}>
+                  <TextField
+                    id="start_month"
+                    label="End Month"
+                    variant="outlined"
+                  />
+                </Grid>
+                <Grid item xs={6}>
+                  <TextField
+                    id="start_year"
+                    label="End Year"
+                    variant="outlined"
+                  />
+                </Grid>
+              </Grid>
+              <hr />
+              <Grid container>
+                <Grid item xs={12}>
+                  <TextareaAutosize
+                    aria-label="empty textarea"
+                    placeholder="Description"
+                    style={{ width: "100%", height: 200 }}
+                  />
+                </Grid>
+              </Grid>
+              <Button type="submit">Submit</Button>
+            </Stack>
+          </form>
+        </ModalDialog>
       </Modal>
       {displayProjectItem}
     </>
