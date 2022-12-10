@@ -1,19 +1,17 @@
-import React, { useState } from "react";
-import { styled } from "@mui/material/styles";
-import Paper from "@mui/material/Paper";
+import React from "react";
 import Grid from "@mui/material/Grid";
 import { Typography } from "@mui/material";
 
-const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
-  ...theme.typography.body2,
-  textAlign: "center",
-  color: theme.palette.text.secondary,
-}));
-
+const classes = {
+  detailsBox: {
+    width: "100%",
+    minHeight: "100px",
+    border: "1px solid #B1B1B1",
+    backgroundColor: "white",
+    padding: "0.5rem",
+  },
+};
 export default function AboutMe(props) {
-  const [Biography, setBiography] = useState(props.description + "Deez");
-
   console.log(props);
   let displayEducation = (education) => {
     return (
@@ -25,21 +23,34 @@ export default function AboutMe(props) {
   };
   return (
     <>
-      <Typography variant="h5">About Me</Typography>
-
-      <Grid
-        container
-        direction="row"
-        justifyContent="flex-end"
-        alignItems="stretch"
-        spacing={2}
-        sx={{ marginTop: 1 }}
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: "0.5rem",
+          marginInline: "0.5rem",
+        }}
       >
+        <Typography variant="h5" align="center">
+          About Me
+        </Typography>
+        <div
+          style={{
+            flexGrow: 1,
+            height: "2px",
+            backgroundColor: "#60A5FA",
+          }}
+        />
+      </div>
+
+      <Grid container spacing={2}>
         <Grid item xs={8}>
-          <Item>{Biography}</Item>
+          <div style={classes.detailsBox}>{props.userInfo.description}</div>
         </Grid>
         <Grid item xs={4}>
-          <Item>{displayEducation("Hunter College")}</Item>
+          <div style={classes.detailsBox}>
+            {displayEducation("Hunter College")}
+          </div>
         </Grid>
       </Grid>
     </>
