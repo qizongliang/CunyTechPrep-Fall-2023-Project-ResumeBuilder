@@ -3,11 +3,11 @@ import Comments from "./Comments";
 import ResumeBox from "./ResumeBox";
 import { getProfile } from "../../../api/user";
 
-export default function ResumeThread() {
+export default function ResumeThread({ userId }) {
   const [resumeThread, setResumeThread] = useState(null);
 
   async function loadProfile() {
-    await getProfile(1)
+    await getProfile(userId ?? 1)
       .then((res) => {
         setResumeThread(res.current_resume);
       })
@@ -16,9 +16,10 @@ export default function ResumeThread() {
 
   useEffect(() => {
     loadProfile();
+    // eslint-disable-next-line
   }, []);
 
-  return !!resumeThread ? (
+  return !!resumeThread && !!resumeThread.post ? (
     <>
       <ResumeBox url={resumeThread.post.resume_url} />
       <div
@@ -38,6 +39,6 @@ export default function ResumeThread() {
       </div>
     </>
   ) : (
-    <>Loading</>
+    <>No resume</>
   );
 }

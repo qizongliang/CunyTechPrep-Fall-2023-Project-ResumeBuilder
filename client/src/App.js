@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter, Routes, Route, NavLink } from "react-router-dom";
 
-import SearchUserPage from "./pages/SearchUserPage";
+import SearchUserPage from "./pages/SearchUsers";
 import ProfilePage from "./pages/ProfilePage";
 import { Avatar } from "@mui/material";
 
@@ -17,7 +17,7 @@ function Navigation(props) {
         <span style={{ display: "flex", gap: "2rem" }}>
           <span style={{ fontSize: "32px", color: "white" }}>Tteok</span>
           <NavLink className="nav-link" to="/search-user">
-            Search User
+            Users
           </NavLink>
         </span>
         <NavLink className="nav-link" to="/profile">

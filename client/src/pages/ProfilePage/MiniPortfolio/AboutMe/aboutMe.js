@@ -12,15 +12,6 @@ const classes = {
   },
 };
 export default function AboutMe(props) {
-  console.log(props);
-  let displayEducation = (education) => {
-    return (
-      <>
-        <a href="https://hunter.cuny.edu/">Education</a>
-        <p>{education}</p>
-      </>
-    );
-  };
   return (
     <>
       <div
@@ -46,11 +37,6 @@ export default function AboutMe(props) {
       <Grid container spacing={2}>
         <Grid item xs={8}>
           <div style={classes.detailsBox}>{props.userInfo.description}</div>
-        </Grid>
-        <Grid item xs={4}>
-          <div style={classes.detailsBox}>
-            {displayEducation("Hunter College")}
-          </div>
         </Grid>
       </Grid>
     </>

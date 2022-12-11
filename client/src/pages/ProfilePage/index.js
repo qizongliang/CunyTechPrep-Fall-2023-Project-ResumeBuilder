@@ -1,11 +1,10 @@
 import { useState, useEffect } from "react";
-import { get } from "lodash";
+import { useSearchParams } from "react-router-dom";
 import UserBanner from "./UserBanner";
 import TabGroups from "../../components/TabGroups";
 import MiniPortfolio from "./MiniPortfolio";
 import ResumeThread from "./ResumeThread";
 import { getProfile } from "../../api/user";
-import ResumeBox from "./ResumeThread/ResumeBox";
 
 const classes = {
   content: {
@@ -18,10 +17,10 @@ export default function ProfilePage() {
   const [projects, setProjects] = useState([]);
   const [workExperiences, setWorkExperiences] = useState([]);
 
-  const [tabIndex, setTabIndex] = useState(0);
+  const [searchParams] = useSearchParams();
 
-  async function retrieveProfile() {
-    await getProfile(1)
+  async function retrieveProfile(user_id) {
+    await getProfile(user_id ?? 1) //default user 1
       .then((res) => {
         setUserInfo(res.profile);
         setProjects(res.projects);
@@ -31,12 +30,9 @@ export default function ProfilePage() {
   }
 
   useEffect(() => {
-    retrieveProfile();
-  }, []);
-
-  const username = "ButterRiolu";
-  const pfp_url =
-    "https://storage.googleapis.com/katsudon-assets/user-profiles/6306b34920cf5f80f7d0c20d/pfp.jpg";
+    const userId = searchParams.get("user_id");
+    retrieveProfile(userId);
+  }, [searchParams]);
 
   const contents = [
     {
@@ -51,7 +47,7 @@ export default function ProfilePage() {
     },
     {
       label: "Resume",
-      component: <ResumeThread />,
+      component: <ResumeThread userId={searchParams.get("user_id")} />,
     },
   ];
 
@@ -61,7 +57,10 @@ export default function ProfilePage() {
 
   return (
     <>
-      <UserBanner username={username} profile_picture_url={pfp_url} />
+      <UserBanner
+        username={userInfo.username}
+        profile_picture_url={userInfo.profile_picture_url}
+      />
       <TabGroups contents={contents} ComponentWrapper={ComponentWrapper} />
     </>
   );
