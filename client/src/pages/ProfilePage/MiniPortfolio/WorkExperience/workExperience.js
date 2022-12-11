@@ -32,7 +32,7 @@ export default function WorkExperience(props) {
         }}
       >
         <Typography variant="h5" align="center">
-          Work Experiences
+          Work Experience
         </Typography>
         <div
           style={{

@@ -1,0 +1,11 @@
+.user-row{
+  display:flex;
+  justify-content: space-between;
+  width:100%;
+  background-color: white;
+  padding:2px;
+}
+
+.user-row:hover{
+  background-color: #efefef;
+}
