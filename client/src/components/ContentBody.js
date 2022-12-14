@@ -6,7 +6,7 @@ const classes = {
     justifyContent: "center",
   },
   content: {
-    backgroundColor: "#CBD5E1",
+    backgroundColor: "#E1DBCB",
     minHeight: "100vh",
     width: "1200px",
     display: "flex",

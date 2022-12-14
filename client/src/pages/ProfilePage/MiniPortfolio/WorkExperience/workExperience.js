@@ -38,10 +38,14 @@ export default function WorkExperience(props) {
           style={{
             flexGrow: 1,
             height: "2px",
-            backgroundColor: "#60A5FA",
+            backgroundColor: "#FAA160",
           }}
         />
-        <Button onClick={handleOpen} endIcon={<AddIcon />}>
+        <Button
+          onClick={handleOpen}
+          endIcon={<AddIcon />}
+          style={{ color: "#E9770E" }}
+        >
           Add Experience
         </Button>
       </div>

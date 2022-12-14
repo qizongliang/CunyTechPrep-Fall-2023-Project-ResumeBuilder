@@ -13,10 +13,12 @@ import ModalClose from "@mui/joy/ModalClose";
 import Stack from "@mui/joy/Stack";
 import ProjectItem from "./projectItem";
 import { addProject } from "../../../../api/user";
+import { useTheme } from "@mui/material/styles";
 
 export default function Project(props) {
   let displayedProjects = props.projects;
   const [open, setOpen] = useState(false);
+  const theme = useTheme();
   const [newProject, setNewProject] = useState({
     title: "",
     brief: "",
@@ -28,6 +30,7 @@ export default function Project(props) {
     tools_used: [],
   });
 
+  console.log(theme.primary);
   const handleOpen = () => setOpen(true);
   let displayProjectItem = displayedProjects.map((item) => {
     return <ProjectItem key={item.id} info={item} />;
@@ -50,10 +53,14 @@ export default function Project(props) {
           style={{
             flexGrow: 1,
             height: "2px",
-            backgroundColor: "#60A5FA",
+            backgroundColor: "#FAA160",
           }}
         />
-        <Button onClick={handleOpen} endIcon={<AddIcon />}>
+        <Button
+          onClick={handleOpen}
+          endIcon={<AddIcon />}
+          style={{ color: "#D77834" }}
+        >
           Add Project
         </Button>
       </div>

@@ -36,7 +36,7 @@ const classes = {
   likes: {
     height: "100%",
     width: "28px",
-    backgroundColor: "#B5E9FF",
+    backgroundColor: "#FAA160",
     borderRadius: "8px 0 0 8px",
     display: "flex",
     flexDirection: "column",
