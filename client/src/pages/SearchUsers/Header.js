@@ -15,7 +15,7 @@ export default function Header() {
         style={{
           width: "100%",
           height: "2px",
-          backgroundColor: "#60A5FA",
+          backgroundColor: "#FAA160",
         }}
       />
     </span>

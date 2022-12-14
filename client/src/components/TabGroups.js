@@ -38,7 +38,7 @@ export default function TabGroups({ contents, ComponentWrapper }) {
                 padding: "0.25rem",
                 textTransform: "none",
                 backgroundColor:
-                  currentTab === idx ? "#60A5FA" : "rgba(0,0,0,0.2)"
+                  currentTab === idx ? "#FAA160" : "rgba(0,0,0,0.2)"
               }}
             />
           );

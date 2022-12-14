@@ -28,13 +28,13 @@ export default function MiniPortfolio(props) {
 
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-      <AboutMe userInfo={userInfo} />
-      <WorkExperience workItems={workExperiences} />
-      <Project
-        projects={projects}
-        refreshProfile={retrieveProfile}
-        userId={searchParams.get("user_id")}
-      />
+        <AboutMe userInfo={userInfo} />
+        <WorkExperience workItems={workExperiences} />
+        <Project
+          projects={projects}
+          refreshProfile={retrieveProfile}
+          userId={searchParams.get("user_id")}
+        />
     </div>
   );
 }

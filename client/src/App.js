@@ -15,7 +15,7 @@ function Navigation(props) {
     <nav>
       <span className="nav-link-container">
         <span style={{ display: "flex", gap: "2rem" }}>
-          <span style={{ fontSize: "32px", color: "white" }}>Tteok</span>
+          <span style={{ fontSize: "32px", color: "white" }}>Bread</span>
           <NavLink className="nav-link" to="/search-user">
             Users
           </NavLink>

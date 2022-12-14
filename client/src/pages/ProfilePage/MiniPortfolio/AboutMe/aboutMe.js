@@ -29,7 +29,7 @@ export default function AboutMe(props) {
           style={{
             flexGrow: 1,
             height: "2px",
-            backgroundColor: "#60A5FA",
+            backgroundColor: "#FAA160",
           }}
         />
       </div>
