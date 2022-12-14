@@ -14,21 +14,14 @@ const classes = {
 
 export default function ProfilePage() {
   const [userInfo, setUserInfo] = useState({});
-  const [projects, setProjects] = useState([]);
-  const [workExperiences, setWorkExperiences] = useState([]);
-
   const [searchParams] = useSearchParams();
-
   async function retrieveProfile(user_id) {
     await getProfile(user_id ?? 1) //default user 1
       .then((res) => {
         setUserInfo(res.profile);
-        setProjects(res.projects);
-        setWorkExperiences(res.work_experiences);
       })
       .catch(console.error);
   }
-
   useEffect(() => {
     const userId = searchParams.get("user_id");
     retrieveProfile(userId);
@@ -40,8 +33,7 @@ export default function ProfilePage() {
       component: (
         <MiniPortfolio
           userInfo={userInfo}
-          workExperiences={workExperiences}
-          projects={projects}
+          userId={searchParams.get("user_id")}
         />
       ),
     },
