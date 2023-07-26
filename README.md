@@ -27,9 +27,9 @@ Inspiration Website List:
 
 * [] [Account Login]
 * [] [Account creation]
-* [] [Work Experience Section]
-* [] [Edit portfolio]
-* [] [Project Section]
+* [x] [Work Experience Section]
+* [x] [Edit portfolio]
+* [x] [Project Section]
 * [] [Technology Link]
 * [] [Social Media Link]
 
